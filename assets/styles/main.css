@@ -2398,7 +2398,7 @@ No background page title
 Background page title
 -----------------------------------------------------------------*/
 .page-title-bg {
-    /*background-image: url(/themes/frontend/kys/assets/kys/img/page-header/cover-1.jpg); /*default bg for every page*/
+    background-image: url(/themes/frontend/kys/assets/kys/img/page-header/cover-1.jpg); /*default bg for every page */
     background-position: 50% 0;
     background-size: cover;
     background-repeat: no-repeat;

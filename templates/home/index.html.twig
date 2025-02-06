@@ -16,7 +16,7 @@
                     <li data-transition="parallaxtoleft" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off">
 
                         <!-- MAIN IMAGE -->
-                        <img src="{{ asset('img/bg1.png') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('img/bg1.jpg') }}"   alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption rev-heading tp-resizeme"
@@ -91,7 +91,7 @@
                     <li data-transition="parallaxtoleft" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off">
 
                         <!-- MAIN IMAGE -->
-                        <img src="{{ asset('img/bg3.png') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('img/bg3.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption rev-heading tp-resizeme"
@@ -182,7 +182,7 @@
                             <h3 class="white-text text-bold text-uppercase no-margin">WE HAVE THE SOLUTION FOR YOU</h3>
                         </div>
                         <div class="promo-btn">
-                            <a href="/templates/contact.html" class="btn border secondary waves-effect waves-light">Contact Us</a>
+                            <a href="{{ path('app_contact') }}" class="btn border secondary waves-effect waves-light">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -205,10 +205,10 @@
 
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img class="img-responsive" src="{{ asset('img/slide1.png') }}" alt="">
+                                    <img class="img-responsive" src="{{ asset('img/slide1.jpg') }}" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="img-responsive" src="{{ asset('img/slide2.png') }}" alt="">
+                                    <img class="img-responsive" src="{{ asset('img/slide2.jpg') }}" alt="">
                                 </div>
                             </div>
 
@@ -228,7 +228,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="/templates/company.html" class="btn gradient secondary waves-effect waves-light mt-40">More about us</a>
+                        <a href="{{ path('app_luxury') }}" class="btn gradient secondary waves-effect waves-light mt-40">More about us</a>
                     </div>
                 </div>
             </div>

@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class CompanyController extends AbstractController
+final class LuxuryController extends AbstractController
 {
-    #[Route('/company', name: 'app_company')]
+    #[Route('/luxury', name: 'app_luxury')]
     public function index(): Response
     {
-        return $this->render('company/index.html.twig', [
-            'controller_name' => 'CompanyController',
+        return $this->render('luxury/index.html.twig', [
+            'controller_name' => 'LuxuryController',
         ]);
     }
 }
