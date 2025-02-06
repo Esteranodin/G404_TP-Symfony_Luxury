@@ -34,25 +34,27 @@
       }
     </script>
 
-    {% block stylesheets %}
-
-    {% endblock %}
-
     {% block javascripts %}
       {% block importmap %}
         {{ importmap('app') }}
       {% endblock %}
     {% endblock %}
 
-   <link href="/assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ asset('styles/main.css') }}" />
+    <link rel="stylesheet" href=" {{ asset('styles/luxury.css') }}" />
+    <link rel="stylesheet" href=" {{ asset('styles/custom.css') }}" />
 
-    <link href="https://assets-luxury.projets.garage404.com/css/materialize.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/bootstrap.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/style.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/custom.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/revolution-settings.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/revolution-layers.css" rel="stylesheet">
-    <link href="https://assets-luxury.projets.garage404.com/css/revolution-navigation.css" rel="stylesheet">
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    <link href="https://assets-luxury.projets.garage404.com/css/materialize.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/style.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/custom.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/revolution-settings.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/revolution-layers.css" rel="stylesheet" />
+    <link href="https://assets-luxury.projets.garage404.com/css/revolution-navigation.css" rel="stylesheet" />
 
     <script src="https://assets-luxury.projets.garage404.com/js/modernizr.js"></script>
     <script src="https://assets-luxury.projets.garage404.com/js/jquery.js"></script>
@@ -86,10 +88,6 @@
     <script src="https://assets-luxury.projets.garage404.com/js/revolution-ext-navigation.js"></script>
     <script src="https://assets-luxury.projets.garage404.com/js/revolution-ext-migration.js"></script>
     <script src="https://assets-luxury.projets.garage404.com/js/revolution-ext-parallax.js"></script>
-    
-    <link rel="stylesheet" href=" {{ asset('styles/main.css') }}" />
-    <link rel="stylesheet" href=" {{ asset('styles/luxury.css') }}" />
-    <link rel="stylesheet" href=" {{ asset('styles/custom.css') }}" />
   </head>
 
   <body id="top">
@@ -111,16 +109,16 @@
               <div class="nav-overlay" id="overlay">
                 <nav class="overlay-menu">
                   <ul>
-                    <li>
+                    <li class="{{ app.current_route is same as('app_home') ? 'active' : '' }}">
                       <a href="{{ path('app_home') }}">Home</a>
                     </li>
-                    <li>
-                      <a href="/templates/jobs/index.html">Jobs Offers</a>
+                    <li class="{{ app.current_route is same as('app_job') ? 'active' : '' }}">
+                      <a href="{{ path('app_job') }}">Jobs Offers</a>
                     </li>
-                    <li>
+                    <li class="{{ app.current_route is same as('app_luxury') ? 'active' : '' }}">
                       <a href="{{ path('app_luxury') }}">About Us</a>
                     </li>
-                    <li>
+                    <li class="{{ app.current_route is same as('app_contact') ? 'active' : '' }}">
                       <a href="{{ path('app_contact') }}">Contact</a>
                     </li>
                     <li>-</li>
@@ -144,25 +142,26 @@
                 </li>
               </ul>
               <ul class="menuzord-menu pull-right light" role="navigation">
-                <li class="active dropdown">
+                <li class="{{ app.current_route is same as('app_home') ? 'active' : '' }} dropdown">
                   <a target="_self" href="{{ path('app_home') }}">
                     <i class=""></i>
                     <span>Home</span>
                   </a>
                 </li>
                 <li class="dropdown">
-                  <a target="_self" href="/templates/jobs/index.html">
+                  <li class="{{ app.current_route is same as('app_job') ? 'active' : '' }} dropdown">
+                  <a target="_self" href="{{ path('app_job') }}">
                     <i class=""></i>
                     <span>Jobs offers</span>
                   </a>
                 </li>
-                <li class="dropdown">
+                <li class="{{ app.current_route is same as('app_luxury') ? 'active' : '' }} dropdown">
                   <a target="_self" href="{{ path('app_luxury') }}">
                     <i class=""></i>
                     <span>About us</span>
                   </a>
                 </li>
-                <li class="dropdown">
+                <li class="{{ app.current_route is same as('app_contact') ? 'active' : '' }} dropdown">
                   <a target="_self" href="{{ path('app_contact') }}">
                     <i class=""></i>
                     <span>Contact</span>
@@ -177,9 +176,11 @@
     <div class="base">
       <!-- Page -->
       <div class="page">
+      
         {% block body %}
 
         {% endblock %}
+
       </div>
     </div>
     <!-- Footer -->
@@ -220,10 +221,10 @@
         <div class="container">
           <ul class="" role="navigation">
             <li class="active dropdown">
-              <a target="_self" href="/"><span>Home</span></a>
+              <a target="_self" href="{{ path('app_home') }}"><span>Home</span></a>
             </li>
             <li class="dropdown">
-              <a target="_self" href="/template/jobs/jobs.html"><span>Jobs offers</span></a>
+              <a target="_self" href="{{ path('app_job') }}"><span>Jobs offers</span></a>
             </li>
             <li class="dropdown">
               <a target="_self" href="{{ path('app_luxury') }}"><span>About us</span></a>

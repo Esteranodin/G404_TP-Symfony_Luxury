@@ -2,8 +2,7 @@
 
 
 {% block body %}
-
-    <!-- RS5.0 Core JS Files -->
+<!-- RS5.0 Core JS Files -->
 
         <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems! The following part can be removed on Server for On Demand Loading) -->
 
@@ -16,7 +15,7 @@
                     <li data-transition="parallaxtoleft" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off">
 
                         <!-- MAIN IMAGE -->
-                        <img src="{{ asset('img/bg1.jpg') }}"   alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('img/bg1.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption rev-heading tp-resizeme"
@@ -279,7 +278,7 @@
                     </ul>
                     <div class="portfolio portfolio-with-title col-2 gutter mt-30">
 
-                        <div class="portfolio-item" data-groups='["all", "commercial"]'>
+                       <div class="portfolio-item" data-groups='["all", "commercial"]'>
                             <div class="portfolio-wrapper">
                                 <div class="card job-card">
                                     <div class="card-content">
@@ -301,7 +300,7 @@
                                         <p class="truncate-text">Nulla interdum, erat et mollis eleifend, urna turpis pellentesque dolor, sed rhoncus erat est sit amet diam. Aliquam dignissim ipsum nec lorem pulvinar.</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn btn-md primary border waves-effect waves-dark" href="/templates/jobs/show.html">Details</a>
+                                        <a class="btn btn-md primary border waves-effect waves-dark" href="{{ path('app_job_show') }}">Details</a>
                                         <a class="btn btn-md primary waves-effect waves-light" href="#!">Apply</a>
                                     </div>
                                 </div>
@@ -329,7 +328,7 @@
                                         <p class="truncate-text">Nulla interdum, erat et mollis eleifend, urna turpis pellentesque dolor, sed rhoncus erat est sit amet diam. Aliquam dignissim ipsum nec lorem pulvinar.</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn btn-md primary border waves-effect waves-dark" href="/templates/jobs/show.html">Details</a>
+                                        <a class="btn btn-md primary border waves-effect waves-dark" href="{{ path('app_job_show') }}">Details</a>
                                         <a class="btn btn-md primary waves-effect waves-light" href="#!">Apply</a>
                                     </div>
                                 </div>
@@ -357,7 +356,7 @@
                                         <p class="truncate-text">Nulla interdum, erat et mollis eleifend, urna turpis pellentesque dolor, sed rhoncus erat est sit amet diam. Aliquam dignissim ipsum nec lorem pulvinar.</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn btn-md primary border waves-effect waves-dark" href="/templates/jobs/show.html">Details</a>
+                                        <a class="btn btn-md primary border waves-effect waves-dark" href="{{ path('app_job_show') }}">Details</a>
                                         <a class="btn btn-md primary waves-effect waves-light" href="#!">Apply</a>
                                     </div>
                                 </div>
@@ -385,7 +384,7 @@
                                         <p class="truncate-text">Nulla interdum, erat et mollis eleifend, urna turpis pellentesque dolor, sed rhoncus erat est sit amet diam. Aliquam dignissim ipsum nec lorem pulvinar.</p>
                                     </div>
                                     <div class="card-action">
-                                        <a class="btn btn-md primary border waves-effect waves-dark" href="/templates/jobs/show.html">Details</a>
+                                        <a class="btn btn-md primary border waves-effect waves-dark" href="{{ path('app_job_show') }}">Details</a>
                                         <a class="btn btn-md primary waves-effect waves-light" href="#!">Apply</a>
                                     </div>
                                 </div>
@@ -397,7 +396,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="/templates/jobs/index.html" class="btn gradient secondary waves-effect waves-light mt-30">View all job offers</a>
+                        <a href="{{ path('app_job') }}" class="btn gradient secondary waves-effect waves-light mt-30">View all job offers</a>
                     </div>
                 </div>
             </div>
@@ -408,11 +407,13 @@
 {% block javascriptFooter %}
 <!-- RS5.0 Init  -->
 <script type="text/javascript">
+    let bg1Url = "{{ asset('img/bg1.jpg') }}";
+    let bg3Url = "{{ asset('img/bg3.jpg') }}";
     document.querySelector(".rev_slider_wrapper").setAttribute("style",
-        "background:url('assets/img"+(
+        "background:url('"+(
             isMobile ?
-                "/bg1.jpg":
-                "/bg3.jpg"
+                bg1Url :
+                bg3Url
         ) + "');" +
         "background-size:cover;"+
         "background-position: center center;"+
