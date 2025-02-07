@@ -16,6 +16,8 @@
             <li>
               <a href="{{ path('app_home') }}">Home</a>
             </li>
+
+
             <li class="active">Login</li>
           </ol>
         </div>
@@ -81,20 +83,4 @@
   </section>
 {% endblock %}
 
-{% block javascriptFooter %}
-  <script type="text/javascript">
-    onAppReady(function () {
-      $('.preload').remove()
-    })
-  </script>
-{% endblock %}
-
-{# {% if app.user %}
-                <div class="mb-3">
-                  You are logged in as
-                  {{ app.user.userIdentifier }},
-                  <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-              {% endif %}
-
-              <form id="login-form" role="form" method="post" accept-char="UTF-8" autocomplete="off" data-parsley-validate> #}
+             
