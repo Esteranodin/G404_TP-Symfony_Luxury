@@ -126,7 +126,7 @@
                       <a href="/templates/auth/profile.html">Profile</a>
                     </li>
                     <li>
-                      <a href="/logout.html">Logout</a>
+                      <a href="{{ path('app_logout') }}">Logout</a>
                     </li>
                   </ul>
                 </nav>
@@ -135,7 +135,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="menuzord-menu pull-right light" role="navigation">
                 <li class="dropdown">
-                  <a target="_self" href="/templates/auth/login.html"><span>Login</span></a>
+                  <a target="_self" href="{{ path('app_login') }}"><span>Login</span></a>
                 </li>
                 <li class="dropdown">
                   <a target="_self" href="{{ path('app_register') }}" class="btn bn-lg gradient secondary btn-block waves-effect waves-light btn-register"><span>Sign Up</span></a>
@@ -177,12 +177,12 @@
       <!-- Page -->
       <div class="page">
       
-        {% block body %}
-
-        {% endblock %}
+      {% include "partials/flash.html.twig" %}
+        {% block body %}{% endblock %}
 
       </div>
     </div>
+    
     <!-- Footer -->
     <footer class="footer footer-four">
       <div class="primary-footer brand-bg text-center">

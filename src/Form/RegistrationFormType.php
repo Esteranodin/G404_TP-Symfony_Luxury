@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,8 +18,20 @@ class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'id' => 'email',
+                    'required' => true,
+                    'data-parsley-trigger' => 'change',
+                    'data-parsley-error-message' => 'A valid email address is required.'    
+                ],
+                'label' => 'Email',
+                
+            ])
+
+            // manque un message pour dire de bien cocher
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -26,6 +39,13 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'attr' => [
+                    'id' => 'accept-terms',
+                    'required' => true,
+                ],
+                'label' => 'I have read and I accept the <a href="#!" target="_blank">Terms Of Use</a>',
+                'label_html' => true,
+
             ])
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
@@ -44,12 +64,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
-                'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
-            ]);
+                'attr' => [
+                    'id' => 'password',
+                    'required' => true,
+                    'data-parsley-minlength' => '6',
+                    'data-parsley-error-message' => 'The password must be at least 6 characters.'
+                ],
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Confirm Password'],
+
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
