@@ -22,6 +22,10 @@ class Candidate
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(max: 255)]
     private ?string $firstName = null;
+    
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255)]
+    private ?string $lastName = null;
 
     #[ORM\Column]
     #[Assert\NotNull]
@@ -33,6 +37,11 @@ class Candidate
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $deletedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'candidates')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Gender $gender = null;
+
 
     public function __construct(DateTimeImmutable $createdAt = new DateTimeImmutable(), DateTimeImmutable $updatedAt = new DateTimeImmutable())
     {
@@ -102,6 +111,30 @@ class Candidate
     public function setDeletedAt(?\DateTimeImmutable $deletedAt): static
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getGender(): ?Gender
+    {
+        return $this->gender;
+    }
+
+    public function setGender(Gender $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }

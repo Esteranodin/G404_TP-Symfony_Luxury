@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidate;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -34,8 +35,11 @@ class RegistrationController extends AbstractController
 
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+            
+            $candidate = new Candidate();
+            $candidate->setUser($user);
 
-            $entityManager->persist($user);
+            $entityManager->persist($candidate);
             $entityManager->flush();
 
             // generate a signed url and email it to the user
