@@ -38,6 +38,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="score-container">
+					
+					{# code if profile complet #}
 					<h4>
 						<img src="{{ asset('img/congrats.gif') }}" style="height: 80px; width: 201px;">
 						&nbsp;
@@ -51,6 +53,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -102,21 +105,22 @@
 					{# Current location #}
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="input-field">
-							<input id="current_location" name="current_location" type="text" value="">
-							<label for="current_location">Current location</label>
+							{{ form_widget(formCandidate.currentLocation) }}
+							{{ form_label(formCandidate.currentLocation) }}
+							{{ form_errors(formCandidate.currentLocation) }}
 						</div>
 					</div>
 
 					{# Address #}
 					<div class="col-xs-12 col-sm-8">
 						<div class="input-field">
-							<input id="address" name="address" type="text" value="">
-							<label for="address">Address</label>
+							{{ form_widget(formCandidate.address) }}
+							{{ form_label(formCandidate.address) }}
+							{{ form_errors(formCandidate.address) }}
 						</div>
 					</div>
-				</div>
-				<div class="row">
 
+				<div class="row">
 					{# Profil picture #}
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="file-field input-field" style="margin-top: 32px;">
@@ -147,33 +151,43 @@
 							{# Country #}
 							<div class="col-xs-12 col-sm-6">
 								<div class="input-field">
-									<input id="country" name="country" type="text" value="">
-									<label for="country">Country</label>
+									{{ form_widget(formCandidate.country) }}
+									{{ form_label(formCandidate.country) }}
+									{{ form_errors(formCandidate.country) }}
 								</div>
 							</div>
 
+							{# Nationality #}
+							<div class="col-xs-12 col-sm-6">
+								<div class="input-field">
+									{{ form_widget(formCandidate.nationality) }}
+									{{ form_label(formCandidate.nationality) }}
+									{{ form_errors(formCandidate.nationality) }}
+								</div>
+							</div>
 
+							{# BirthDay #}
 							<div class="col-xs-12 col-sm-6">
 								<div class="input-field">
-									<input id="nationality" name="nationality" type="text" value="">
-									<label for="nationality">Nationality</label>
+									{{ form_widget(formCandidate.birthDay) }}
+									{{ form_label(formCandidate.birthDay) }}
+									{{ form_errors(formCandidate.birthDay) }}
 								</div>
 							</div>
+
+							{# BirthPlace #}
 							<div class="col-xs-12 col-sm-6">
 								<div class="input-field">
-									<input class="datepicker" id="birth_date" name="birth_date" type="text" value="">
-									<label for="birth_date">Birthdate</label>
+									{{ form_widget(formCandidate.birthPlace) }}
+									{{ form_label(formCandidate.birthPlace) }}
+									{{ form_errors(formCandidate.birthPlace) }}
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="input-field">
-									<input id="birth_place" name="birth_place" type="text" value="">
-									<label for="birth_place">Birthplace</label>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
+
 				<div class="row mt-40">
 					<h3 class="text-extrabold">Your professional profile</h3>
 					<div class="col-xs-12 col-sm-6">
