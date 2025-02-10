@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
@@ -41,12 +42,15 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('G404 TP Symfony Luxury');
+            ->setTitle('Luxury Services')
+            ->setFaviconPath('img/logo.png');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('USERS', 'fas fa-list', User::class);
+
+        yield MenuItem::section('Recruters');
+        yield MenuItem::linkToCrud('USERS', 'fas fa-user-tie', User::class);
     }
 }
