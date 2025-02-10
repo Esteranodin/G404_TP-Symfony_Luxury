@@ -19,15 +19,6 @@ class CandidateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName', TextType::class, [
-                'required' => false,
-                'attr' => [
-                    'class' => 'form-control',
-                    'id' => 'first_name',
-                ],
-                'label' => 'First name',
-            ])
-
             ->add('gender', EntityType::class, [
                 'class' => Gender::class,
                 'choice_label' => 'name',
@@ -41,8 +32,29 @@ class CandidateType extends AbstractType
                 ],
                 'placeholder' => 'Choose an option...',
             ])
-            
-            // ->add('lastName')
+
+            ->add('firstName', TextType::class, [
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'id' => 'first_name',
+                ],
+                'label' => 'First name',
+            ])
+
+            ->add('lastName', TextType::class, [
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'id' => 'last_name',
+                ],
+                'label' => 'Last name',
+            ])
+
+            // ->add('currentLocation', TextType::class, [
+            //     'required' => false,
+            //     'label' => 'Current location',
+            // ])
 
 
             ->addEventListener(FormEvents::POST_SUBMIT, $this->setUpdatedAt(...))
@@ -56,7 +68,7 @@ class CandidateType extends AbstractType
         ]);
     }
 
-    public function setUpdatedAt (FormEvent $event):void 
+    public function setUpdatedAt(FormEvent $event): void
     {
         $candidate = $event->getData();
         $candidate->setUpdatedAt(new DateTimeImmutable());

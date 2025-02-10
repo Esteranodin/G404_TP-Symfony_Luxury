@@ -93,8 +93,9 @@
 					{# Last name #}
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="input-field">
-							<input type="text" class="form-control" name="last_name" id="last_name" value="" >
-							<label for="last_name">Last name</label>
+							{{ form_widget(formCandidate.lastName) }}
+							{{ form_label(formCandidate.lastName) }}
+							{{ form_errors(formCandidate.lastName) }}
 						</div>
 					</div>
 
