@@ -34,7 +34,7 @@ class Candidate
     private ?\DateTimeImmutable $deletedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidates')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Gender $gender = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -63,18 +63,20 @@ class Candidate
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $birthPlace = null;
 
-    /**
-     * @var Collection<int, Files>
-     */
-    #[ORM\OneToMany(targetEntity: Files::class, mappedBy: 'candidate')]
-    private Collection $files;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profilePicPath = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $passportPath = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cvPath = null;
+
+  
     public function __construct(DateTimeImmutable $createdAt = new DateTimeImmutable(), DateTimeImmutable $updatedAt = new DateTimeImmutable())
     {
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
-        $this->files = new ArrayCollection();
     }
 
 
@@ -239,33 +241,40 @@ class Candidate
         return $this;
     }
 
-    /**
-     * @return Collection<int, Files>
-     */
-    public function getFiles(): Collection
+    public function getProfilePicPath(): ?string
     {
-        return $this->files;
+        return $this->profilePicPath;
     }
 
-    public function addFile(Files $file): static
+    public function setProfilePicPath(?string $profilePicPath): static
     {
-        if (!$this->files->contains($file)) {
-            $this->files->add($file);
-            $file->setCandidate($this);
-        }
+        $this->profilePicPath = $profilePicPath;
 
         return $this;
     }
 
-    public function removeFile(Files $file): static
+    public function getPassportPath(): ?string
     {
-        if ($this->files->removeElement($file)) {
-            // set the owning side to null (unless already changed)
-            if ($file->getCandidate() === $this) {
-                $file->setCandidate(null);
-            }
-        }
+        return $this->passportPath;
+    }
+
+    public function setPassportPath(?string $passportPath): static
+    {
+        $this->passportPath = $passportPath;
 
         return $this;
     }
+
+    public function getCvPath(): ?string
+    {
+        return $this->cvPath;
+    }
+
+    public function setCvPath(?string $cvPath): static
+    {
+        $this->cvPath = $cvPath;
+
+        return $this;
+    }
+
 }
