@@ -212,13 +212,13 @@
 										{{ originalPassport }}
 									</a>
 								</div>
-							{% endif %}
+								{% endif %}
 
-								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text" placeholder="Upload your passport" readonly>
+									<div class="file-path-wrapper">
+										<input class="file-path validate" type="text" placeholder="Upload your passport" readonly>
+									</div>
 								</div>
-							</div>
-							
+													
 						{# CV #}
 							<div class="file-field input-field">
 								<div class="btn btn-lg primary waves-effect waves-light">
@@ -229,20 +229,19 @@
 								{{ form_errors(formCandidate.cvPicture) }}
 								</div>
 							
-							{% if candidate.cvPath %}
-								<div id="existing-file-cv" class="existing-file">
-									<a href="{{ asset('uploads/cv_files/' ~ candidate.cvPath) }}" target="_blank">
-										<i class="material-icons">&#xE24D;</i>
-										{{ originalCv }}
-									</a>
-								</div>
-							{% endif %}
+								{% if candidate.cvPath %}
+									<div id="existing-file-cv" class="existing-file">
+										<a href="{{ asset('uploads/cv_files/' ~ candidate.cvPath) }}" target="_blank">
+											<i class="material-icons">&#xE24D;</i>
+											{{ originalCv }}
+										</a>
+									</div>
+								{% endif %}
 
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text" placeholder="Upload your Curriculum Vitae" readonly>
 								</div>
 							</div>
-
 						</div>
 					</div>
 

@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\CandidateRepository;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -71,6 +69,15 @@ class Candidate
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cvPath = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'candidates')]
+    private ?Sector $sectorJob = null;
+
+    #[ORM\ManyToOne(inversedBy: 'candidates')]
+    private ?Xperience $experience = null;
 
   
     public function __construct(DateTimeImmutable $createdAt = new DateTimeImmutable(), DateTimeImmutable $updatedAt = new DateTimeImmutable())
@@ -273,6 +280,42 @@ class Candidate
     public function setCvPath(?string $cvPath): static
     {
         $this->cvPath = $cvPath;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSectorJob(): ?Sector
+    {
+        return $this->sectorJob;
+    }
+
+    public function setSectorJob(?Sector $sectorJob): static
+    {
+        $this->sectorJob = $sectorJob;
+
+        return $this;
+    }
+
+    public function getExperience(): ?Xperience
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(?Xperience $experience): static
+    {
+        $this->experience = $experience;
 
         return $this;
     }
