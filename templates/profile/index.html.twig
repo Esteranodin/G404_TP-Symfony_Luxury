@@ -194,36 +194,50 @@
 					<div class="col-xs-12 col-sm-6">
 
 						<div class="card card-panel passport">
+
+						{# Passport #}
 							<div class="file-field input-field">
 								<div class="btn btn-lg primary waves-effect waves-light">
 									<span>
 										<i class="material-icons">&#xE24D;</i>
 										Passport</span>
-									<input id="passport" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="passport" type="file">
+								{{ form_widget(formCandidate.passportPicture) }}
+								{{ form_errors(formCandidate.passportPicture) }}
 								</div>
-								<div class="existing-file">
-									<a href="#!" target="_blank">
+
+								{% if candidate.passportPath %}
+								<div id="existing-file-passport" class="existing-file">
+									<a href="{{ asset('uploads/passport_files/' ~ candidate.passportPath) }}" target="_blank">
 										<i class="material-icons">&#xE24D;</i>
-										passeport.jpg</a>
+										{{ originalPassport }}
+									</a>
 								</div>
+							{% endif %}
+
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text" placeholder="Upload your passport" readonly>
 								</div>
 							</div>
-
+							
+						{# CV #}
 							<div class="file-field input-field">
 								<div class="btn btn-lg primary waves-effect waves-light">
 									<span>
 										<i class="material-icons">&#xE24D;</i>
 										CV</span>
-									<input id="cv" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="cv" type="file">
+								{{ form_widget(formCandidate.cvPicture) }}
+								{{ form_errors(formCandidate.cvPicture) }}
 								</div>
-
-								<div class="existing-file">
-									<a href="#!" target="_blank">
+							
+							{% if candidate.cvPath %}
+								<div id="existing-file-cv" class="existing-file">
+									<a href="{{ asset('uploads/cv_files/' ~ candidate.cvPath) }}" target="_blank">
 										<i class="material-icons">&#xE24D;</i>
-										CV.pdf</a>
+										{{ originalCv }}
+									</a>
 								</div>
+							{% endif %}
+
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text" placeholder="Upload your Curriculum Vitae" readonly>
 								</div>

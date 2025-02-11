@@ -127,6 +127,50 @@ class CandidateType extends AbstractType
                 ],
             ])
 
+            ->add('passportPicture', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'accept' => '.pdf,.jpg,.doc,.docx,.png,.jpeg',
+                    'size' => 200000000,
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '200M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'application/pdf',
+                            'application/msword',
+                            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
+            ])
+
+            ->add('cvPicture', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'accept' => '.pdf,.jpg,.doc,.docx,.png,.jpeg',
+                    'size' => 200000000,
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '200M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'application/pdf',
+                            'application/msword',
+                            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
+            ])
+
             ->addEventListener(FormEvents::POST_SUBMIT, $this->setUpdatedAt(...))
             ;
         }
