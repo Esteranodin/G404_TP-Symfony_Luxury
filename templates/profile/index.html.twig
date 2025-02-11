@@ -37,13 +37,14 @@
 	<section class="gray-bg">
 		<div class="container">
 			<div class="row">
-				<div class="score-container">
-					
+				<div
+					class="score-container">
+
 					{# code if profile complet #}
 					<h4>
 						<img src="{{ asset('img/congrats.gif') }}" style="height: 80px; width: 201px;">
 						&nbsp;
-						&nbsp; Hooray ! Your profile is complete.
+												&nbsp; Hooray ! Your profile is complete.
 					</h4>
 					<div class="c100 p100 small complete ">
 						<span>100%</span>
@@ -68,59 +69,60 @@
 			'accept-charset': 'UTF-8'
 		} }) }}
 
-		<section class="section-padding">
-			<div class="container">
-				<div class="row">
-					<h3 class="text-extrabold">Your personal informations</h3>
+	<section class="section-padding">
+		<div class="container">
+			<div class="row">
+				<h3 class="text-extrabold">Your personal informations</h3>
 
-					{# Gender #}
-					<div class="col-xs-12 col-sm-6 col-md-4">
-						<div class="input-field">
-							{{ form_widget(formCandidate.gender) }}
-							{{ form_label(formCandidate.gender) }}
-							{{ form_errors(formCandidate.gender) }}
-						</div>
+				{# Gender #}
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="input-field">
+						{{ form_widget(formCandidate.gender) }}
+						{{ form_label(formCandidate.gender) }}
+						{{ form_errors(formCandidate.gender) }}
 					</div>
+				</div>
 
-					<div class="clearfix visible-sm"></div>
+				<div class="clearfix visible-sm"></div>
 
-					{# First name #}
-					<div class="col-xs-12 col-sm-6 col-md-4">
-						<div class="input-field">
-							{{ form_widget(formCandidate.firstName) }}
-							{{ form_label(formCandidate.firstName) }}
-							{{ form_errors(formCandidate.firstName) }}
-						</div>
+				{# First name #}
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="input-field">
+						{{ form_widget(formCandidate.firstName) }}
+						{{ form_label(formCandidate.firstName) }}
+						{{ form_errors(formCandidate.firstName) }}
 					</div>
+				</div>
 
-					{# Last name #}
-					<div class="col-xs-12 col-sm-6 col-md-4">
-						<div class="input-field">
-							{{ form_widget(formCandidate.lastName) }}
-							{{ form_label(formCandidate.lastName) }}
-							{{ form_errors(formCandidate.lastName) }}
-						</div>
+				{# Last name #}
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="input-field">
+						{{ form_widget(formCandidate.lastName) }}
+						{{ form_label(formCandidate.lastName) }}
+						{{ form_errors(formCandidate.lastName) }}
 					</div>
+				</div>
 
-					{# Current location #}
-					<div class="col-xs-12 col-sm-6 col-md-4">
-						<div class="input-field">
-							{{ form_widget(formCandidate.currentLocation) }}
-							{{ form_label(formCandidate.currentLocation) }}
-							{{ form_errors(formCandidate.currentLocation) }}
-						</div>
+				{# Current location #}
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="input-field">
+						{{ form_widget(formCandidate.currentLocation) }}
+						{{ form_label(formCandidate.currentLocation) }}
+						{{ form_errors(formCandidate.currentLocation) }}
 					</div>
+				</div>
 
-					{# Address #}
-					<div class="col-xs-12 col-sm-8">
-						<div class="input-field">
-							{{ form_widget(formCandidate.address) }}
-							{{ form_label(formCandidate.address) }}
-							{{ form_errors(formCandidate.address) }}
-						</div>
+				{# Address #}
+				<div class="col-xs-12 col-sm-8">
+					<div class="input-field">
+						{{ form_widget(formCandidate.address) }}
+						{{ form_label(formCandidate.address) }}
+						{{ form_errors(formCandidate.address) }}
 					</div>
+				</div>
 
-				<div class="row">
+				<div
+					class="row">
 					{# Profile picture #}
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="file-field input-field" style="margin-top: 32px;">
@@ -133,12 +135,12 @@
 							</div>
 
 							{% if candidate.profilePicPath %}
-							<div id="existing-file-photo" class="existing-file">
-								<a href="{{ asset('uploads/profile_pictures/' ~ candidate.profilePicPath ) }}" target="_blank">
-									<i class="material-icons">&#xE24D;</i>
-									{{ originalProfilPicture }}
+								<div id="existing-file-photo" class="existing-file">
+									<a href="{{ asset('uploads/profile_pictures/' ~ candidate.profilePicPath ) }}" target="_blank">
+										<i class="material-icons">&#xE24D;</i>
+										{{ originalProfilPicture }}
 									</a>
-							{% endif %}
+								{% endif %}
 							</div>
 							<div class="file-path-wrapper">
 								<input class="file-path validate" type="text" placeholder="Upload your ID photo" readonly>
@@ -147,7 +149,8 @@
 					</div>
 
 					<div class="col-xs-12 col-sm-6 col-md-8">
-						<div class="row">
+						<div
+							class="row">
 
 							{# Country #}
 							<div class="col-xs-12 col-sm-6">
@@ -193,42 +196,43 @@
 					<h3 class="text-extrabold">Your professional profile</h3>
 					<div class="col-xs-12 col-sm-6">
 
-						<div class="card card-panel passport">
+						<div
+							class="card card-panel passport">
 
-						{# Passport #}
+							{# Passport #}
 							<div class="file-field input-field">
 								<div class="btn btn-lg primary waves-effect waves-light">
 									<span>
 										<i class="material-icons">&#xE24D;</i>
 										Passport</span>
-								{{ form_widget(formCandidate.passportPicture) }}
-								{{ form_errors(formCandidate.passportPicture) }}
+									{{ form_widget(formCandidate.passportPicture) }}
+									{{ form_errors(formCandidate.passportPicture) }}
 								</div>
 
 								{% if candidate.passportPath %}
-								<div id="existing-file-passport" class="existing-file">
-									<a href="{{ asset('uploads/passport_files/' ~ candidate.passportPath) }}" target="_blank">
-										<i class="material-icons">&#xE24D;</i>
-										{{ originalPassport }}
-									</a>
-								</div>
+									<div id="existing-file-passport" class="existing-file">
+										<a href="{{ asset('uploads/passport_files/' ~ candidate.passportPath) }}" target="_blank">
+											<i class="material-icons">&#xE24D;</i>
+											{{ originalPassport }}
+										</a>
+									</div>
 								{% endif %}
 
-									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text" placeholder="Upload your passport" readonly>
-									</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text" placeholder="Upload your passport" readonly>
 								</div>
-													
-						{# CV #}
+							</div>
+
+							{# CV #}
 							<div class="file-field input-field">
 								<div class="btn btn-lg primary waves-effect waves-light">
 									<span>
 										<i class="material-icons">&#xE24D;</i>
 										CV</span>
-								{{ form_widget(formCandidate.cvPicture) }}
-								{{ form_errors(formCandidate.cvPicture) }}
+									{{ form_widget(formCandidate.cvPicture) }}
+									{{ form_errors(formCandidate.cvPicture) }}
 								</div>
-							
+
 								{% if candidate.cvPath %}
 									<div id="existing-file-cv" class="existing-file">
 										<a href="{{ asset('uploads/cv_files/' ~ candidate.cvPath) }}" target="_blank">
@@ -245,35 +249,35 @@
 						</div>
 					</div>
 
-					<div class="col-xs-12 col-sm-6">
+					<div
+						class="col-xs-12 col-sm-6">
+
+						{# Sector #}
 						<div class="col-xs-12 col-sm-12">
 							<div class="input-field" style="margin-top: 5px;">
-								<select id="job_sector" name="job_sector[]" multiple data-placeholder="Type in or Select job sector you would be interested in.">
-									<option value="">Choose an option...</option>
-									<option value="">job sector</option>
-								</select>
-								<label for="job_sector" class="active">Interest in job sector</label>
+								{{ form_widget(formCandidate.sectorJob) }}
+								{{ form_label(formCandidate.sectorJob) }}
+								{{ form_errors(formCandidate.sectorJob) }}
 							</div>
 						</div>
+
+						{# XP #}
 						<div class="col-xs-12 col-sm-12">
 							<div class="input-field">
-								<select id="experience" name="experience">
-									<option value="">Choose</option>
-									<option value="3m">0 - 6 month</option>
-									<option value="6m">6 month - 1 year</option>
-									<option value="1y">1 - 2 years</option>
-									<option value="2y">2+ years</option>
-									<option value="5y" selected="selected">5+ years</option>
-									<option value="10y">10+ years</option>
-								</select>
-								<label for="experience" class="active">Experience</label>
+								{{ form_widget(formCandidate.experience) }}
+								{{ form_label(formCandidate.experience) }}
+								{{ form_errors(formCandidate.experience) }}
 							</div>
 						</div>
 					</div>
+
+					{# Desciption #}
 					<div class="col-xs-12 col-sm-12">
 						<div class="input-field">
-							<textarea class="materialize-textarea" id="description" name="description" cols="50" rows="10"></textarea>
-							<label for="description">Short description for your profile, as well as more personnal informations (e.g. your hobbies/interests ). You can also paste any link you want.</label>
+							{{ form_widget(formCandidate.description) }}
+							<label for="{{ formCandidate.description.vars.id }}" class="{% if formCandidate.description.vars.value %}active{% endif %}">
+							{{ formCandidate.description.vars.label }}</label>
+							{{ form_errors(formCandidate.description) }}
 						</div>
 					</div>
 				</div>
@@ -327,5 +331,5 @@
 			</div>
 		</section>
 
-	{{ form_end(formCandidate) }}
-{% endblock %}
+		{{ form_end(formCandidate) }}
+	{% endblock %}

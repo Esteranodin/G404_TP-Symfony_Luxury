@@ -4,11 +4,14 @@ namespace App\Form;
 
 use App\Entity\Candidate;
 use App\Entity\Gender;
+use App\Entity\Sector;
+use App\Entity\Xperience;
 use DateTimeImmutable;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -168,6 +171,46 @@ class CandidateType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])
+                ],
+            ])
+
+            ->add('description', TextareaType::class, [
+                'required' => false,
+                'label' => 'Short description for your profile, as well as more personnal informations (e.g. your hobbies/interests ). You can also paste any link you want.',
+                'attr' => [
+                    'id' => 'description',
+                    'class' => 'materialize-textarea',
+                    'cols' => 50,
+                    'rows' => 10,
+                ],
+            ])
+
+            ->add('sectorJob', EntityType::class, [
+                'class' => Sector::class,
+                'choice_label' => 'name',
+                'required' => false,
+                'placeholder' => 'Choose an option...',
+                'label' => 'Interest in job sector',
+                'attr' => [
+                    'id' => 'job_sector',
+                    'data-placeholder' => 'Type in or Select job sector you would be interested in.',
+                ],
+                'label_attr' => [
+                    'class' => 'active',
+                ],
+            ])
+
+            ->add('experience', EntityType::class, [
+                'class' => Xperience::class,
+                'choice_label' => 'name',
+                'required' => false,
+                'placeholder' => 'Choose an option...',
+                'label' => 'Experience',
+                'attr' => [
+                    'id' => 'experience',
+                ],
+                'label_attr' => [
+                    'class' => 'active',
                 ],
             ])
 
