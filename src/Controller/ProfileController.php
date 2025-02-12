@@ -7,16 +7,19 @@ use App\Entity\User;
 use App\Form\CandidateType;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FileUploadError;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
-    public function index(EntityManagerInterface $entityManager, Request $request, FileUploader $fileUploader): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, FileUploader $fileUploader, UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer): Response
     {
         /** @var User */
         $user = $this->getUser();
@@ -68,7 +71,35 @@ final class ProfileController extends AbstractController
                 $candidate->setCvPath($cvFileName);
             }
 
+            $email = $formCandidate->get('email')->getData();
+            $newPassword = $formCandidate->get('newPassword')->getData();
+
+            if ($email || $newPassword) {
+                if ($email && $newPassword) {
+                    if ($user->getEmail() !== $email) {
+                        $this->addFlash('danger', 'The email you entered does not match the email associated with your account.');
+                    } else {
+                        $hashedPassword = $passwordHasher->hashPassword($user, $newPassword);
+                        $user->setPassword($hashedPassword);
+                        try {
+                            $mail = (new TemplatedEmail())
+                                ->from('contact@luxury-services.com')
+                                ->to($user->getEmail())
+                                ->subject('Change of password')
+                                ->htmlTemplate('emails/change_password.html.twig');         
             
+                            $mailer->send($mail);
+                            $this->addFlash('success', 'Your password has been changed successfully!');
+                        } catch (\Exception $e) {
+                            $this->addFlash('danger', 'An error occurred while sending the message : ' . $e->getMessage());
+                        }
+                    }
+                } 
+                else {
+                    $this->addFlash('danger', 'Email and password must be filled together to change password.');
+                }
+            }
+
             $entityManager->persist($candidate);
             $entityManager->flush();
 

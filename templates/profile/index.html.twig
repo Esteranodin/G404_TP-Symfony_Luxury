@@ -287,35 +287,48 @@
 		<section class="section-padding gray-bg">
 			<div class="container">
 				<div class="row">
-					<h3 class="text-extrabold">Your K-Yachting account</h3>
+					<h3 class="text-extrabold">Change your password</h3>
+
+					{# mail #}
 					<div class="col-xs-12 col-sm-4">
 						<div class="input-field">
-							<input id="email" name="email" type="email" value="">
-							<label for="email">Email</label>
+							{{ form_widget(formCandidate.email) }}
+							{{ form_label(formCandidate.email) }}
+							{{ form_errors(formCandidate.email) }}
 						</div>
 					</div>
+
+					{# Password change #}
 					<div class="col-xs-12 col-sm-4">
 						<div class="input-field">
-							<input id="password" name="password" type="password" value="">
-							<label for="password">Change your password here</label>
+							{{ form_widget(formCandidate.newPassword.first) }}
+							{{ form_label(formCandidate.newPassword.first) }}
+							{{ form_errors(formCandidate.newPassword.first) }}
 						</div>
 					</div>
+
+					{# Password confirm #}
 					<div class="col-xs-12 col-sm-4">
 						<div class="input-field">
-							<input id="password_repeat" name="password_repeat" type="password" value="">
-							<label for="password_repeat">Confirm your new password</label>
+							{{ form_widget(formCandidate.newPassword.second) }}
+							{{ form_label(formCandidate.newPassword.second) }}
+							{{ form_errors(formCandidate.newPassword.second) }}
 						</div>
 					</div>
 				</div>
+
+				{# Delete account #}
 				<div class="row">
 					<div class="col-xs-12 mt-40 mb-80 delete-account">
 						<a href="#!" onclick="return prompt('Please Type \'Delete my account\' to delete your K-Yachting Services account:') == 'Delete my account'" class="btn btn-block btn-lg waves-effect waves-light">
 							<i class="material-icons">&#xE872;</i>Delete my account</a>
 					</div>
 				</div>
+
+
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-4">
-						<a href="#!" class="btn btn-block btn-lg border primary waves-effect waves-light">
+						<a href="{{ path ('app_home') }}" class="btn btn-block btn-lg border primary waves-effect waves-light">
 							<i class="fa fa-long-arrow-left"></i>
 							Back home</a>
 					</div>
