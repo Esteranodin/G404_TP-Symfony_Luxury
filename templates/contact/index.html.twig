@@ -25,9 +25,15 @@
   </section>
 
   <!-- Page Content -->
-  <form method="POST" action="#!" accept-charset="UTF-8" id="formContact" class="light-gray-bg">
-    <input name="_token" type="hidden" value="" />
-    <input name="job_id" type="hidden" value="" />
+    {{ form_start(formContact, {
+        'attr' : {
+          'id': 'formContact',
+          'class': 'light-gray-bg',
+          'accept-charset': 'UTF-8'
+        }} ) }}
+
+    {# <input name="_token" type="hidden" value="" />
+    <input name="job_id" type="hidden" value="" /> #}
     <section class="section-padding">
       <div class="container">
         <div class="text-center mb-80">
@@ -40,36 +46,41 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="input-field">
-                  <input required="required" name="firstname" type="text" />
-                  <label for="firstname">First name</label>
+                {{ form_widget(formContact.firstName) }}
+									{{ form_label(formContact.firstName) }}
+									{{ form_errors(formContact.firstName) }}
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="input-field">
-                  <input required="required" name="lastname" type="text" />
-                  <label for="lastname">Last name</label>
+                  {{ form_widget(formContact.lastName) }}
+									{{ form_label(formContact.lastName) }}
+									{{ form_errors(formContact.lastName) }}
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="input-field">
-                  <input required="required" name="email" type="email" />
-                  <label for="email">Email</label>
+                  {{ form_widget(formContact.email) }}
+									{{ form_label(formContact.email) }}
+									{{ form_errors(formContact.email) }}
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="input-field">
-                  <input required="required" name="phone" type="tel" />
-                  <label for="phone">Phone Number</label>
+                  {{ form_widget(formContact.phone) }}
+									{{ form_label(formContact.phone) }}
+									{{ form_errors(formContact.phone) }}
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="input-field">
-                  <textarea class="materialize-textarea" required="required" name="message" cols="50" rows="10"></textarea>
-                  <label for="message">Message</label>
+                  {{ form_widget(formContact.message) }}
+									{{ form_label(formContact.message) }}
+									{{ form_errors(formContact.message) }}
                 </div>
               </div>
             </div>
@@ -105,7 +116,7 @@
         </div>
       </div>
     </section>
-  </form>
+{{ form_end(formContact)}}
   <div id="myMap" class="height-350">Gmap here</div>
   
 {% endblock %}
