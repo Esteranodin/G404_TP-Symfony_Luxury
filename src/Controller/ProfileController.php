@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Candidate;
 use App\Entity\User;
 use App\Form\CandidateType;
+use App\Service\CandidateProgress;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -19,7 +20,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
-    public function index(EntityManagerInterface $entityManager, Request $request, FileUploader $fileUploader, UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, FileUploader $fileUploader, UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer, CandidateProgress $candidateProgress): Response
     {
         /** @var User */
         $user = $this->getUser();
@@ -120,12 +121,31 @@ final class ProfileController extends AbstractController
             $originalCvFilename = preg_replace('/-\w{13}(?=\.\w{3,4}$)/', '', $candidate->getCvPath());
         }
 
+        $requiredFields = [
+            'firstName',
+            'lastName',
+            'currentLocation',
+            'address',
+            'country',
+            'nationality',
+            'birthDay',
+            'birthPlace',
+            'gender',
+            'sectorJob',
+            'experience',
+            'description',
+        ];
+
+        $progression = $candidateProgress->calculateProgress($candidate, $requiredFields);
+
+
         return $this->render('profile/index.html.twig', [
             'formCandidate' => $formCandidate->createView(),
             'candidate' => $candidate,
             'originalProfilPicture' => $originalProfilePictureFilename ?? null,
             'originalPassport' => $originalPassportFilename ?? null,
             'originalCv' => $originalCvFilename ?? null,
+            'progression' => $progression
         ]);
     }
 }

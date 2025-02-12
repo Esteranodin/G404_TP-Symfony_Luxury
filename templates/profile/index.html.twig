@@ -10,6 +10,57 @@
 		.boxshadow {
 			box-shadow: none !important;
 		}
+
+		.score-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.progress-container {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		h4 {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+
+		.progress-circle {
+			transform: rotate(-90deg);
+			transform-origin: center;
+		}
+
+		.progress-background {
+			fill: none;
+			stroke: #ddd;
+			stroke-width: 10;
+		}
+
+		.progress-bar {
+			fill: none;
+			stroke: #4CAF50; /* Couleur de la barre */
+			stroke-width: 10;
+			stroke-linecap: round;
+			transition: stroke-dashoffset 0.5s ease-out;
+		}
+
+		.progress-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 18px;
+			font-weight: bold;
+			color: #333;
+		}
 	</style>
 {% endblock %}
 
@@ -37,22 +88,29 @@
 	<section class="gray-bg">
 		<div class="container">
 			<div class="row">
-				<div
-					class="score-container">
 
-					{# code if profile complet #}
-					<h4>
-						<img src="{{ asset('img/congrats.gif') }}" style="height: 80px; width: 201px;">
-						&nbsp;
-												&nbsp; Hooray ! Your profile is complete.
-					</h4>
-					<div class="c100 p100 small complete ">
-						<span>100%</span>
-						<div class="slice">
-							<div class="bar"></div>
-							<div class="fill"></div>
+				<div class="score-container">
+					{% if progression == 100 %}
+						<h4>
+							<img src="{{ asset('img/congrats.gif') }}" style="height: 80px; width: 201px;">
+							&nbsp; Hooray ! Your profile is complete.
+						</h4>
+						<div class="progress-container">
+							<svg class="progress-circle" width="100" height="100" viewbox="0 0 100 100">
+								<circle class="progress-background" cx="50" cy="50" r="45"></circle>
+								<circle class="progress-bar" cx="50" cy="50" r="45" style="stroke-dasharray: 283; stroke-dashoffset: 0;"></circle>
+							</svg>
+							<span class="progress-text">100%</span>
 						</div>
-					</div>
+					{% else %}
+						<div class="progress-container">
+							<svg class="progress-circle" width="100" height="100" viewbox="0 0 100 100">
+								<circle class="progress-background" cx="50" cy="50" r="45"></circle>
+								<circle class="progress-bar" cx="50" cy="50" r="45" style="stroke-dasharray: 283; stroke-dashoffset: {{ 283 - (progression / 100) * 283 }};"></circle>
+							</svg>
+							<span class="progress-text">{{ progression }}%</span>
+						</div>
+					{% endif %}
 				</div>
 
 				<div class="clearfix"></div>
