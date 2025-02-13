@@ -4,121 +4,153 @@
 {# <head>
   <meta name="base_url" content="http://www.fgtechs.fr/z-pedro/wwwluxuryservices" />
 </head> #}
+	{% block stylesheets %}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/> <style>
+		#map {
+			height: 60vw;
+      width: 90vw;
+		}
+	</style>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+{% endblock %}
 
 {% block body %}
-  <!-- Page Header -->
-  <section class="page-title page-title-bg fixed-bg overlay dark-5 padding-top-160 padding-bottom-80">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="white-text">Feel free to contact us</h2>
-          <span class="white-text">for any questions or demands</span>
-          <ol class="breadcrumb">
-            <li>
-              <a href="{{ path('app_home') }}">Home</a>
-            </li>
-            <li class="active">Contact</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Page Header -->
+<section class="page-title page-title-bg fixed-bg overlay dark-5 padding-top-160 padding-bottom-80">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="white-text">Feel free to contact us</h2>
+				<span class="white-text">for any questions or demands</span>
+				<ol class="breadcrumb">
+					<li>
+						<a href="{{ path('app_home') }}">Home</a>
+					</li>
+					<li class="active">Contact</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
 
-  <!-- Page Content -->
-    {{ form_start(formContact, {
+<!-- Page Content -->
+{{ form_start(formContact, {
         'attr' : {
           'id': 'formContact',
           'class': 'light-gray-bg',
           'accept-charset': 'UTF-8'
-        }} ) }}
+        }}
+) }}
 
-    {# <input name="_token" type="hidden" value="" />
-    <input name="job_id" type="hidden" value="" /> #}
-    <section class="section-padding">
-      <div class="container">
-        <div class="text-center mb-80">
-          <h2 class="section-title text-uppercase">Drop us a line</h2>
-          <p class="section-sub text-center">Whether your needs, desires or wishes are urgent or a little less, they will all be taken care of with the some efficiency by us.</p>
-        </div>
+{# <input name="_token" type="hidden" value="" />
+				    <input name="job_id" type="hidden" value="" /> #}
+<section class="section-padding">
+	<div class="container">
+		<div class="text-center mb-80">
+			<h2 class="section-title text-uppercase">Drop us a line</h2>
+			<p class="section-sub text-center">Whether your needs, desires or wishes are urgent or a little less, they will all be taken care of with the some efficiency by us.</p>
+		</div>
 
-        <div class="row">
-          <div id="contactForm" class="col-xs-12 col-sm-12 col-md-8">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="input-field">
-                {{ form_widget(formContact.firstName) }}
-									{{ form_label(formContact.firstName) }}
-									{{ form_errors(formContact.firstName) }}
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="input-field">
-                  {{ form_widget(formContact.lastName) }}
-									{{ form_label(formContact.lastName) }}
-									{{ form_errors(formContact.lastName) }}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="input-field">
-                  {{ form_widget(formContact.email) }}
-									{{ form_label(formContact.email) }}
-									{{ form_errors(formContact.email) }}
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="input-field">
-                  {{ form_widget(formContact.phone) }}
-									{{ form_label(formContact.phone) }}
-									{{ form_errors(formContact.phone) }}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="input-field">
-                  {{ form_widget(formContact.message) }}
-									{{ form_label(formContact.message) }}
-									{{ form_errors(formContact.message) }}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-md-6 col-md-offset-3">
-                <button type="submit" name="submit" class="btn btn-block gradient primary waves-effect waves-light submit-button">Send Message</button>
-              </div>
-            </div>
-          </div>
+		<div class="row">
+			<div id="contactForm" class="col-xs-12 col-sm-12 col-md-8">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-field">
+							{{ form_widget(formContact.firstName) }}
+							{{ form_label(formContact.firstName) }}
+							{{ form_errors(formContact.firstName) }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-field">
+							{{ form_widget(formContact.lastName) }}
+							{{ form_label(formContact.lastName) }}
+							{{ form_errors(formContact.lastName) }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-field">
+							{{ form_widget(formContact.email) }}
+							{{ form_label(formContact.email) }}
+							{{ form_errors(formContact.email) }}
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-field">
+							{{ form_widget(formContact.phone) }}
+							{{ form_label(formContact.phone) }}
+							{{ form_errors(formContact.phone) }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-field">
+							{{ form_widget(formContact.message) }}
+							{{ form_label(formContact.message) }}
+							{{ form_errors(formContact.message) }}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-md-offset-3">
+						<button type="submit" name="submit" class="btn btn-block gradient primary waves-effect waves-light submit-button">Send Message</button>
+					</div>
+				</div>
+			</div>
 
-          <div class="col-xs-12 col-sm-12 col-md-4 contact-info mt-40">
-            <address>
-              <i class="material-icons brand-color">&#xE55F;</i>
-              <div class="address">
-                <p>Luxury Services is based in Roanne, on Loire department</p>
-              </div>
-              <i class="material-icons brand-color">&#xE61C;</i>
-              <div class="phone">
-                <p>+33 (0) 6 60 06 66 00</p>
-              </div>
-              <i class="material-icons brand-color">&#xE916;</i>
-              <div class="phone">
-                <p>9 - 22h with 24/7 speaker</p>
-              </div>
-              <i class="material-icons brand-color">&#xE0E1;</i>
-              <div class="mail">
-                <p>
-                  <a href="#!">georges[a]luxuryservices.com</a>
-                </p>
-              </div>
-            </address>
-          </div>
-        </div>
-      </div>
-    </section>
+			<div class="col-xs-12 col-sm-12 col-md-4 contact-info mt-40">
+				<address>
+					<i class="material-icons brand-color">&#xE55F;</i>
+					<div class="address">
+						<p>Luxury Services is based in Roanne, on Loire department</p>
+					</div>
+					<i class="material-icons brand-color">&#xE61C;</i>
+					<div class="phone">
+						<p>+33 (0) 6 60 06 66 00</p>
+					</div>
+					<i class="material-icons brand-color">&#xE916;</i>
+					<div class="phone">
+						<p>9 - 22h with 24/7 speaker</p>
+					</div>
+					<i class="material-icons brand-color">&#xE0E1;</i>
+					<div class="mail">
+						<p>
+							<a href="#!">georges[a]luxuryservices.com</a>
+						</p>
+					</div>
+				</address>
+			</div>
+		</div>
+	</div>
+</section>
 {{ form_end(formContact)}}
-  <div id="myMap" class="height-350">Gmap here</div>
-  
+
+<div id="map"></div>
+
+{% endblock %}
+
+{% block jsMap %}
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+    var map = L.map('map').setView([
+    45.4386, 4.3871
+    ], 15); // Zoom niveau 15
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    L.marker([45.4378103, 4.381062]).addTo(map).bindPopup('Here, adress').openPopup();
+    });
+    </script>
+
 {% endblock %}
 
 

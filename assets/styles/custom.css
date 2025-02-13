@@ -808,7 +808,7 @@ h4 {
     white-space: nowrap;
     direction: ltr;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizelegibility
+    text-rendering: optimizelegibility;
 }
 
 body {
