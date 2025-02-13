@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Recruiter;
 
-use App\Entity\Gender;
-use App\Entity\Sector;
-use App\Entity\User;
-use App\Entity\Xperience;
+use App\Entity\Candidate;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
-class DashboardController extends AbstractDashboardController
+#[AdminDashboard(routePath: '/recruiter', routeName: 'recruiter')]
+class RecruiterDashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
+    #[Route('/recruiter', name: 'recruiter')]
     public function index(): Response
     {
         // return parent::index();
@@ -39,14 +36,13 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('recruiter/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Luxury Services')
-            ->setFaviconPath('img/logo.png');
+            ->setTitle('Recruiter interface');
     }
 
     public function configureMenuItems(): iterable
@@ -54,26 +50,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-desktop');
 
-        yield MenuItem::section('Jobs');
-
-        // yield MenuItem::linkToCrud('Job Offer Types', 'fas fa-briefcase', JobOfferType::class);
-        yield MenuItem::linkToCrud('Sectors', 'fas fa-tags', Sector::class);
-
-
         yield MenuItem::section('Candidates');
-
-        yield MenuItem::linkToCrud('Experiences', 'fas fa-chart-line', Xperience::class);
-
-        // TODO
-        // yield MenuItem::linkToCrud('Candidates', 'fa fa-users', Candidate::class);
-        yield MenuItem::linkToCrud('Genders', 'fa fa-bath', Gender::class);
-
-       
-        // TODO
-        // yield MenuItem::section('Recruiters');
-
-        // yield MenuItem::linkToCrud('Recruiters', 'fa fa-user-tie', User::class);
-    }
-
+        yield MenuItem::linkToCrud('Who', 'fa fa-user-o', Candidate::class);
     
+    }
 }

@@ -29,3 +29,5 @@
     ```bash
     php bin/console messenger:consume async -vv
     ```
+
+* Les **icones** : https://fontawesome.com/v4/icons/
