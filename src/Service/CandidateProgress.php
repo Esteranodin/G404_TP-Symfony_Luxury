@@ -1,5 +1,5 @@
 <?php
-
+// premier essai calcul pourcentage complétion profil candidat
 
 namespace App\Service;
 

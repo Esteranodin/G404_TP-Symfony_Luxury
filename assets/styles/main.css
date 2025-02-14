@@ -1046,6 +1046,7 @@ Back To Top
 }
 .back-top {
     position: absolute!important;
+ 
     top: -116px;
     right: 0;
 }
@@ -2886,3 +2887,7 @@ Vertical Tab
     }
 }
 .fa.fa-eye.show-password.active{display: none;}
+
+#iconBackToTop {
+    z-index: 1000;
+}
