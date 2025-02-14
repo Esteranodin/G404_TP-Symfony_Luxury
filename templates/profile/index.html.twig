@@ -381,11 +381,12 @@
 
 				{# Delete account #}
 				<div class="row">
-					<div class="col-xs-12 mt-40 mb-80 delete-account">
-						<a href="#!" onclick="return prompt('Please Type \'Delete my account\' to delete your K-Yachting Services account:') == 'Delete my account'" class="btn btn-block btn-lg waves-effect waves-light">
-							<i class="material-icons">&#xE872;</i>Delete my account</a>
-					</div>
+				<div class="col-xs-12 mt-40 mb-80 delete-account">
+					<a href="{{ path('app_profile_delete', {id: app.user.candidate.id}) }}" onclick="return prompt('Please Type \'&nbsp;Delete my account&nbsp;\' to delete your Luxury Services account:') == 'Delete my account'" class="btn btn-block btn-lg waves-effect waves-light">
+						<i class="material-icons">&#xE872;</i>Delete my account
+					</a>
 				</div>
+			</div>
 
 
 				<div class="row">

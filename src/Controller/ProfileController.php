@@ -49,9 +49,9 @@ final class ProfileController extends AbstractController
         if ($formCandidate->isSubmitted() && $formCandidate->isValid()) {
 
             $files = [
-                'profilPic' => $formCandidate->get('profilePicture')->getData(),
-                'passport' => $formCandidate->get('passportPicture')->getData(),
-                'cv' => $formCandidate->get('cvPicture')->getData(),
+                'profilePicPath' => $formCandidate->get('profilePicture')->getData(),
+                'passportPath' => $formCandidate->get('passportPicture')->getData(),
+                'cvPath' => $formCandidate->get('cvPicture')->getData(),
             ];
 
             $fileHandler->handleFiles($candidate, $files);

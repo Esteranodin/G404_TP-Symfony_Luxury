@@ -33,9 +33,9 @@ class FileHandler implements FileHandlerInterface
     private function getUploadDirectory(string $field): string
     {
         return match ($field) {
-            'profilPic' => 'profile-pictures',
-            'passport' => 'passport',
-            'cv' => 'curriculum-vitae',
+            'profilePicPath' => 'profile_pictures',
+            'passportPath' => 'passport_files',
+            'cvPath' => 'cv_files',
             default => 'uploads',
         };
     }
