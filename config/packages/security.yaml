@@ -22,7 +22,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                # success_handler: App\Security\LoginSuccessHandler
+                success_handler: App\Security\LoginSuccessHandler
                 enable_csrf: true
             logout:
                 path: app_logout
@@ -42,7 +42,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/recruiter, roles: ROLE_RECRUITER }
+        - { path: ^/recruiter, roles: [ROLE_RECRUITER, ROLE_ADMIN] }
 
 when@test:
     security:

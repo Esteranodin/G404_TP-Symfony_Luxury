@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $resetToken = null;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Recruiter $recruiter = null;
+
 
     public function __toString()
     {
@@ -164,6 +167,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setResetToken(?string $resetToken): static
     {
         $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    public function getRecruiter(): ?Recruiter
+    {
+        return $this->recruiter;
+    }
+
+    public function setRecruiter(Recruiter $recruiter): static
+    {
+        // set the owning side of the relation if necessary
+        if ($recruiter->getUser() !== $this) {
+            $recruiter->setUser($this);
+        }
+
+        $this->recruiter = $recruiter;
 
         return $this;
     }

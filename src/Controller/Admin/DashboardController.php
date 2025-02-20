@@ -70,9 +70,9 @@ class DashboardController extends AbstractDashboardController
 
        
         // TODO
-        // yield MenuItem::section('Recruiters');
+        yield MenuItem::section('Recruiters');
 
-        // yield MenuItem::linkToCrud('Recruiters', 'fa fa-user-tie', User::class);
+        yield MenuItem::linkToCrud('Recruiters', 'fa fa-user-tie', User::class);
     }
 
     
