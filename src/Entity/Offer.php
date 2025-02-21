@@ -53,6 +53,9 @@ class Offer
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
 
     public function __construct(DateTimeImmutable $createdAt = new DateTimeImmutable(), DateTimeImmutable $updatedAt = new DateTimeImmutable())
     {
@@ -154,7 +157,7 @@ class Offer
         return $this->closingAt;
     }
 
-    public function setClosingAt(\DateTimeImmutable $closingAt): static
+    public function setClosingAt(?\DateTimeImmutable $closingAt): static
     {
         $this->closingAt = $closingAt;
 
@@ -206,6 +209,18 @@ class Offer
     public function setReference(string $reference): static
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

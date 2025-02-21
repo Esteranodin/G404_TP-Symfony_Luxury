@@ -62,22 +62,11 @@ class UserCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'type' => PasswordType::class,
                     'first_options' => ['label' => 'Password'],
-                    'second_options' => ['label' => 'Repeat Password']])
-                    ->setRequired($pageName === Crud::PAGE_NEW)
-                    ->onlyOnForms()
+                    'second_options' => ['label' => 'Repeat Password']
+                ])
+                ->setRequired($pageName === Crud::PAGE_NEW)
+                ->onlyOnForms()
         ];
-    }
-
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if ($entityInstance instanceof User) {
-            $entityInstance->setEmail($entityInstance->getEmail());
-            $this->hashPassword($entityInstance);
-        }
-
-        $entityManager->persist($entityInstance);
-        $entityManager->flush();
-
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
@@ -90,9 +79,15 @@ class UserCrudController extends AbstractCrudController
                 $recruiter = new Recruiter();
                 $recruiter->setUser($entityInstance);
             }
- 
+
             parent::persistEntity($entityManager, $recruiter);
         }
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->hashPassword($entityInstance);
+        parent::updateEntity($entityManager, $entityInstance);
     }
 
     private function hashPassword(User $user): void
