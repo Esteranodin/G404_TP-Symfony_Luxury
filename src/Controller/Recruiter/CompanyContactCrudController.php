@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Recruiter;
 
-use App\Entity\Sector;
+use App\Entity\CompanyContact;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 
-class SectorCrudController extends AbstractCrudController
+class CompanyContactCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Sector::class;
+        return CompanyContact::class;
     }
 
     /*

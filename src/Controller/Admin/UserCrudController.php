@@ -91,7 +91,7 @@ class UserCrudController extends AbstractCrudController
                 $recruiter->setUser($entityInstance);
             }
  
-            parent::persistEntity($entityManager, $entityInstance);
+            parent::persistEntity($entityManager, $recruiter);
         }
     }
 

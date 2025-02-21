@@ -24,11 +24,21 @@ class Sector
     #[ORM\OneToMany(targetEntity: Candidate::class, mappedBy: 'sectorJob')]
     private Collection $candidates;
 
+    /**
+     * @var Collection<int, Offer>
+     */
+    #[ORM\OneToMany(targetEntity: Offer::class, mappedBy: 'sectorJob')]
+    private Collection $offers;
+
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
+        $this->offers = new ArrayCollection();
     }
-
+    public function __toString()
+    {
+        return $this->name;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +80,36 @@ class Sector
             // set the owning side to null (unless already changed)
             if ($candidate->getSectorJob() === $this) {
                 $candidate->setSectorJob(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Offer>
+     */
+    public function getOffers(): Collection
+    {
+        return $this->offers;
+    }
+
+    public function addOffer(Offer $offer): static
+    {
+        if (!$this->offers->contains($offer)) {
+            $this->offers->add($offer);
+            $offer->setSectorJob($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffer(Offer $offer): static
+    {
+        if ($this->offers->removeElement($offer)) {
+            // set the owning side to null (unless already changed)
+            if ($offer->getSectorJob() === $this) {
+                $offer->setSectorJob(null);
             }
         }
 

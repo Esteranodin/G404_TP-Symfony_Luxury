@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Recruiter;
 
-use App\Entity\Sector;
+use App\Entity\Offer;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-
-class SectorCrudController extends AbstractCrudController
+class OfferCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Sector::class;
+        return Offer::class;
     }
 
     /*

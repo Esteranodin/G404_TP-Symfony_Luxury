@@ -31,3 +31,8 @@
     ```
 
 * Les **icones** : https://fontawesome.com/v4/icons/
+
+# TO DO / FINISH
+
+* Mettre tous les **Asserts**
+* Verifier les **Flash**
